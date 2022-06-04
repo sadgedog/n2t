@@ -38,3 +38,10 @@ int xor(int a, int b) {
   out = or(w1, w2);
   return out;
 }
+
+int *not16(int in[16]) {
+  int *out = malloc(sizeof(int) * 16);
+  for (int i = 0; i < 16; i++)
+    out[i] = nand(in[i], in[i]);
+  return out;
+}

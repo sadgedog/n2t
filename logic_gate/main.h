@@ -9,3 +9,4 @@ int not(int in);
 int and(int a, int b);
 int or(int a, int b);
 int xor(int a, int b);
+int *not16(int in[16]);
