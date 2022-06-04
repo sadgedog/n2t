@@ -45,3 +45,17 @@ int *not16(int in[16]) {
     out[i] = nand(in[i], in[i]);
   return out;
 }
+
+int *or16(int a[16], int b[16]) {
+  int *out = malloc(sizeof(int) * 16);
+  for (int i = 0; i < 16; i++)
+    out[i] = or(a[i], b[i]);
+  return out;
+}
+
+int *and16(int a[16], int b[16]) {
+  int *out = malloc(sizeof(int) * 16);
+  for (int i = 0; i < 16; i++)
+    out[i] = and(a[i], b[i]);
+  return out;
+}
