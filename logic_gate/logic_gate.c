@@ -77,3 +77,38 @@ int *dmux(int in, int sel) {
   out[1] = and(in, sel);
   return out;
 }
+
+
+
+// not tested from here
+int *mux16(int a[16], int b[16], int sel) {
+  int *out = malloc(sizeof(int) * 16);
+  for (int i = 0; i < 16; i++)
+    out[i] = mux(a[i], b[i], sel);
+  return out;
+}
+
+int *mux4way16(int a[16], int b[16], int c[16], int d[16], int sel[2]) {
+  int *w1 = malloc(sizeof(int) * 16);
+  int *w2 = malloc(sizeof(int) * 16);
+  int *out = malloc(sizeof(int) * 16);
+  w1 = mux16(a, b, sel[0]);
+  w2 = mux16(c, d, sel[0]);
+  out = mux16(w1, w2, sel[1]);
+  free(w1);
+  free(w2);
+  return out;
+}
+
+int *mux8way16(int a[16], int b[16], int c[16], int d[16], int e[16], int f[16], int g[16], int h[16], int sel[3]) {
+  int *w1 = malloc(sizeof(int) * 16);
+  int *w2 = malloc(sizeof(int) * 16);
+  int *out = malloc(sizeof(int) * 16);
+  int sel1[2] = {sel[2], sel[1]};
+  w1 = mux4way16(a, b, c, d, sel1);
+  w2 = mux4way16(e, f, g, h, sel1);
+  out = mux16(w1, w2, sel[0]);
+  free(w1);
+  free(w2);
+  return out;
+}

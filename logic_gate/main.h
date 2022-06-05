@@ -14,4 +14,8 @@ int *or16(int a[16], int b[16]);
 int *and16(int a[16], int b[16]);
 int mux(int a, int b, int sel);
 int *dmux(int in, int sel);
+int *mux16(int a[16], int b[16], int sel);
+int *mux4way16(int a[16], int b[16], int c[16], int d[16], int sel[2]);
+int *mux8way16(int a[16], int b[16], int c[16], int d[16], int e[16], int f[16], int g[16], int h[16], int sel[3]);
+
 int test();
