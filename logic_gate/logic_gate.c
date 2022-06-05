@@ -59,3 +59,21 @@ int *and16(int a[16], int b[16]) {
     out[i] = and(a[i], b[i]);
   return out;
 }
+
+int mux(int a, int b, int sel) {
+  int notsel, w1, w2, out;
+  notsel = not(sel);
+  w1 = and(a, notsel);
+  w2 = and(b, sel);
+  out = or(w1, w2);
+  return out;
+}
+
+int *dmux(int in, int sel) {
+  int notsel;
+  int *out = malloc(sizeof(int) * 2);
+  notsel = not(sel);
+  out[0] = and(in, notsel);
+  out[1] = and(in, sel);
+  return out;
+}

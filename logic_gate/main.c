@@ -68,6 +68,11 @@ int r_and16[6][16] = {{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0},
                       {0,0,0,0,1,1,0,0,1,1,0,0,0,0,0,0},
                       {0,0,0,1,0,0,0,0,0,0,1,1,0,1,0,0}};
 
+int in_mux[8][3] = {{0,0,0},{0,0,1},{0,1,0},{0,1,1},{1,0,0},{1,0,1},{1,1,0},{1,1,1}};
+int r_mux[8] = {0,0,0,1,1,0,1,1};
+
+int in_dmux[4][2] = {{0,0},{0,1},{1,0},{1,1}};
+int r_dmux[4][2] = {{0,0},{0,0},{1,0},{0,1}};
 
 int main() {
   test();
@@ -193,6 +198,32 @@ int test() {
     }
   }
   free(res_and16);
+
+  // MUX
+  printf("MUX\n");
+  for (int i = 0; i < 8; i++) {
+    int r;
+    r = mux(in_mux[i][0], in_mux[i][1], in_mux[i][2]);
+    printf("{%d, %d, %d} => %d\n", in_mux[i][0], in_mux[i][1], in_mux[i][2], r);
+    if (r != r_mux[i]) {
+      printf("NG");
+      exit(1);
+    }
+  }
+
+  // DMUX
+  printf("DMUX\n");
+  int *res_dmux;
+  for (int i = 0; i < 4; i ++) {
+    res_dmux = dmux(in_dmux[i][0], in_dmux[i][1]);
+    printf("{%d %d} => {%d, %d}", r_dmux[i][0], r_dmux[i][1], res_dmux[0], res_dmux[1]);
+    printf("\n");
+    if (memcmp(res_dmux,  r_dmux[i], 2 * sizeof(int)) != 0) {
+      printf("NG\n");
+      exit(1);
+    }
+  }
+  free(res_dmux);
 
   printf("ALL CONFIRMED\n");
   return 0;
