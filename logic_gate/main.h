@@ -4,6 +4,7 @@
 #include <string.h>
 #include <errno.h>
 
+// logic_gate.c
 // pt.1
 int nand(int a, int b);
 int not(int in);
@@ -27,9 +28,11 @@ int *alu(int a[16], int b[16], int zx, int nx, int zy, int ny, int f, int no);
 
 typedef struct ALU ALU;
 
+// main.c
 // test code
 int test();
 
+// value.c
 extern int l[4][2];
 extern int ll[2];
 extern int r_nand[4];
