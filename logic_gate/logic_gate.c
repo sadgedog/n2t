@@ -1,5 +1,7 @@
+
 #include "main.h"
 
+// pt.1
 int nand(int a, int b) {
   if (a >= 1 && b >= 1) {
     return 0;
@@ -79,7 +81,6 @@ int *dmux(int in, int sel) {
 }
 
 
-
 // not tested from here
 int *mux16(int a[16], int b[16], int sel) {
   int *out = malloc(sizeof(int) * 16);
@@ -110,5 +111,27 @@ int *mux8way16(int a[16], int b[16], int c[16], int d[16], int e[16], int f[16],
   out = mux16(w1, w2, sel[0]);
   free(w1);
   free(w2);
+  return out;
+}
+
+// pt.2
+int *halfadder(int a, int b) {
+  int *out = malloc(sizeof(int) * 2);
+  // out[0] = sum
+  // out[1] = carry
+  out[0] = xor(a, b);
+  out[1] = and(a, b);
+  return out;
+}
+
+int *fulladder(int a, int b, int c) {
+  int *out = malloc(sizeof(int) * 2);
+  // out[0] = sum
+  // out[1] = carry
+  int w1 = halfadder(a, b)[0];
+  int w2 = halfadder(a, b)[1];
+  out[0] = halfadder(w1, c)[0];
+  int w3 = halfadder(w1, c)[1];
+  out[1] = or(w2, w3);
   return out;
 }

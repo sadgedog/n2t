@@ -109,6 +109,11 @@ int in_mux8way16[8][16] = {{0,0,0,1,0,0,1,0,0,0,1,1,0,1,0,0},
 int in_mux8way16_sel[8][3] = {{0,0,0},{0,0,1},{0,1,0},{0,1,1},
                               {1,0,0},{1,0,1},{1,1,0},{1,1,1}};
 
+int in_halfadder[4][2] = {{0,0},{0,1},{1,0},{1,1}};
+
+int in_fulladder[8][3] = {{0,0,0},{0,0,1},{0,1,0},{0,1,1},
+                          {1,0,0},{1,0,1},{1,1,0},{1,1,1}};
+
 
 int main() {
   test();
@@ -277,7 +282,7 @@ int test() {
     printf("%d", res_mux16[i]);
   }
   printf("\n");
-  
+  free(res_mux16);
   
   // MUX4WAY16
   printf("MUX4WAY16\n");
@@ -293,10 +298,12 @@ int test() {
     }
     printf("\n");
   }
+  free(res_mux4way16);
+  
   // MUX8WAY16
   printf("MUX8WAY16\n");
   int *res_mux8way16;
-  for(int i = 0; i< 8; i++) {
+  for(int i = 0; i < 8; i++) {
     res_mux8way16 = mux8way16(in_mux8way16[0],
                               in_mux8way16[1],
                               in_mux8way16[2],
@@ -311,6 +318,43 @@ int test() {
     }
     printf("\n");
   }
+  free(res_mux8way16);
+
+
+  // pt.2
+  // HalfAdder
+  printf("HalfAdder\n");
+  int *res_halfadder;
+  for (int i = 0; i < 4; i++) {
+    res_halfadder = halfadder(in_halfadder[i][0],
+                              in_halfadder[i][1]);
+    printf("{%d, %d} => carry:%d sum:%d\n",
+           in_halfadder[i][0], in_halfadder[i][1],
+           res_halfadder[1], res_halfadder[0]);
+  }
+  free(res_halfadder);
+
+  // FullAdder
+  printf("FullAdder\n");
+  int *res_fulladder;
+  for (int i = 0; i < 8; i++) {
+    res_fulladder = fulladder(in_fulladder[i][0],
+                              in_fulladder[i][1],
+                              in_fulladder[i][2]);
+    printf("{%d, %d, %d} => carry:%d sum:%d\n",
+           in_fulladder[i][0], in_fulladder[i][1], in_fulladder[i][2],
+           res_fulladder[1], res_fulladder[0]);
+  }
+  // Incrementor
+  printf("Incrementor\n");
+
+  // ALU
+  printf("ALU\n");
+
+  
+  // pt.3
+
+  
   printf("ALL CONFIRMED\n");
   return 0;
 }
