@@ -135,3 +135,15 @@ int *fulladder(int a, int b, int c) {
   out[1] = or(w2, w3);
   return out;
 }
+
+int *add16(int a[16], int b[16]) {
+  int *out = malloc(sizeof(int) * 16);
+  return out;
+}
+
+int *inc16(int in[16]) {
+  int *out = malloc(sizeof(int) * 16);
+  return out;
+}
+
+// ALUは返値多いので構造体返す方がいいかも

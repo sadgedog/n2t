@@ -22,6 +22,7 @@ int *mux8way16(int a[16], int b[16], int c[16], int d[16], int e[16], int f[16],
 int *halfadder(int a, int b);
 int *fulladder(int a, int b, int c);
 int *add16(int a[16], int b[16]);
+int *inc16(int in[16]);
 int *alu(int a[16], int b[16], int zx, int nx, int zy, int ny, int f, int no);
 
 // test code

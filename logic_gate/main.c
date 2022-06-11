@@ -345,6 +345,10 @@ int test() {
            in_fulladder[i][0], in_fulladder[i][1], in_fulladder[i][2],
            res_fulladder[1], res_fulladder[0]);
   }
+
+  // Adder 16bit
+  printf("Adder16\n");
+  
   // Incrementor
   printf("Incrementor\n");
 
