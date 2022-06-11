@@ -25,5 +25,34 @@ int *add16(int a[16], int b[16]);
 int *inc16(int in[16]);
 int *alu(int a[16], int b[16], int zx, int nx, int zy, int ny, int f, int no);
 
+typedef struct ALU ALU;
+
 // test code
 int test();
+
+extern int l[4][2];
+extern int ll[2];
+extern int r_nand[4];
+extern int r_not[4];
+extern int r_and[4];
+extern int r_or[4];
+extern int r_xor[4];
+extern int in_not16[4][16];
+extern int r_not16[4][16];
+extern int in_or16[12][16];
+extern int r_or16[6][16];
+extern int in_and16[12][16];
+extern int r_and16[6][16];
+extern int in_mux[8][3];
+extern int r_mux[8];
+extern int in_dmux[4][2];
+extern int r_dmux[4][2];
+extern int in_mux16[8][16];
+extern int in_mux16_sel[8];
+extern int r_mux16[8][16];
+extern int in_mux4way16[4][16];
+extern int in_mux4way16_sel[4][2];
+extern int in_mux8way16[8][16];
+extern int in_mux8way16_sel[8][3];
+extern int in_halfadder[4][2];
+extern int in_fulladder[8][3];
