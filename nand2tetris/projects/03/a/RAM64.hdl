@@ -9,6 +9,10 @@
  * the in value is loaded into the memory location specified by address 
  * (the loaded value will be emitted to out from the next time step onward).
  */
+ // 二つのレジスタ間で計算を行う場合, レジスタの物理的な距離が離れている場合には
+ // その計算を行うまでに時間がかかる（両方のレジスタにアクセスするまでにはALUは正しくない値を出力する）
+ // そのため, 物理的に最も離れているレジスタ間を移動するのにかかる時間を計測し,
+ // クロック数をその時間以上にすれば良い
 
 CHIP RAM64 {
     IN in[16], load, address[6];
