@@ -3,7 +3,7 @@ SRCS = main.c logic_gate.c value.c
 TARGET = main
 
 main: main.c
-	$(CC) $(SRCS) -o $(TARGET)
+	$(CC) -o $(TARGET) $(SRCS)
 
 test:main
 	bash test.sh
