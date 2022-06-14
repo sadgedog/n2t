@@ -7,3 +7,4 @@ i = bit.one
 
 # nand
 two_in = [[z, z], [z, i], [i, z], [i, i]]
+one_in = [z, i]
