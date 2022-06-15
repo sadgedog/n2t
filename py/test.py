@@ -4,10 +4,13 @@ from main import (
     And,
     Or,
     Xor,
+    Not16,
 )
 from value import (
     two_in,
     one_in,
+    in_not16,
+    in_or16,
 )
 
 def test():
@@ -62,18 +65,20 @@ def test():
         else:
             exit(1)
 
+    # or16
+    print("Not16")
+    for i in range(4):
+        res = (Not16(in_not16[i]))
+        for j in range(16):
+            res[j] = int(res[j])
+        print(res)
         
-
 def check(a, b):
     return a == b
         
 def main():
-    test()
-    
+    test()    
     return 0
-
-
-
 
 
 if __name__ == '__main__':

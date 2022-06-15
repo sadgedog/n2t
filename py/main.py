@@ -10,7 +10,7 @@ def Nand(a: bit, b: bit):
         return bit.zero
     else:
         return bit.one
-
+    
 def Not(a: bit):
     out = Nand(a, a)
     return out
@@ -32,4 +32,10 @@ def Xor(a: bit, b: bit):
     w1 = And(a, notb)
     w2 = And(b, nota)
     out = Or(w1, w2)
+    return out
+
+def Not16(a: list):
+    out = [bit.zero] * 16
+    for i in range(16):
+        out[i] = (Nand(a[i], a[i]))
     return out
