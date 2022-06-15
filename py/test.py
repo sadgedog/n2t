@@ -2,6 +2,8 @@ from main import (
     Nand,
     Not,
     And,
+    Or,
+    Xor,
 )
 from value import (
     two_in,
@@ -24,6 +26,7 @@ def test():
     for i in range(2):
         res = int(Not(one_in[i]))
         ref = int(not(one_in[i]))
+        r = check(res, ref)
         if (r):
             print(ref, "=>", res)
         else:
@@ -33,8 +36,33 @@ def test():
     for i in range(4):
         res = int(And(two_in[i][0], two_in[i][1]))
         ref = int((two_in[i][0] and two_in[i][1]))
+        r = check(res, ref)
         if (r):
             print(ref, "=>", res)
+
+    # or
+    print("OR")
+    for i in range(4):
+        res = int(Or(two_in[i][0], two_in[i][1]))
+        ref = int((two_in[i][0] or two_in[i][1]))
+        r = check(res, ref)
+        if (r):
+            print(ref, "=>", res)
+        else:
+            exit(1)
+
+    # xor
+    print("XOR")
+    for i in range(4):
+        res = int(Xor(two_in[i][0], two_in[i][1]))
+        ref = int((two_in[i][0] ^ two_in[i][1]))
+        r = check(res, ref)
+        if (r):
+            print(ref, "=>", res)
+        else:
+            exit(1)
+
+        
 
 def check(a, b):
     return a == b
@@ -43,6 +71,9 @@ def main():
     test()
     
     return 0
+
+
+
 
 
 if __name__ == '__main__':
