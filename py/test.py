@@ -72,6 +72,7 @@ def test():
         for j in range(16):
             res[j] = int(res[j])
         print(res)
+    
         
 def check(a, b):
     return a == b
