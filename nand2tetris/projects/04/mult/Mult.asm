@@ -1,4 +1,4 @@
-// This file is part of www.nand2tetris.org
+// This fAile is part of www.nand2tetris.org
 // and the book "The Elements of Computing Systems"
 // by Nisan and Schocken, MIT Press.
 // File name: projects/04/Mult.asm
@@ -25,7 +25,7 @@
     @R0
     D = M // D = R0
     @R2
-    M = D + M // R2 = R2 + R0 
+    M = D + M // R2 = R2 + R0
     @i
     M = M + 1 // i++
     @LOOP
